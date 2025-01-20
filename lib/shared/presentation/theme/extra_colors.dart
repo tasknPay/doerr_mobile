@@ -48,4 +48,5 @@ class ExtraColors {
   static const Color transparent = Colors.transparent;
   static const Color teal = Color(0xFF008080);
   static const Color turquoise = Color(0xFF40E0D0);
+  static const Color customGreen = Color(0xFF34A853);
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'extra_colors.dart';
@@ -7,9 +6,9 @@ import 'extra_colors.dart';
 ColorScheme lightColorScheme = ColorScheme.fromSeed(
   error: const Color(0xFFDD211F),
   surface: const Color(0xFFF5F5F5),
-  primary: const Color(0xFFFC6011),
+  primary: ExtraColors.customGreen,
   onSurface: const Color(0xFF8B8B8B),
-  seedColor: const Color(0xFFFC6011),
+  seedColor: ExtraColors.customGreen,
   onPrimary: ExtraColors.white,
   brightness: Brightness.light,
   background: ExtraColors.white,
@@ -22,15 +21,15 @@ ThemeData lightTheme = ThemeData(
   colorScheme: lightColorScheme,
   splashColor: const Color(0xFFF5F5F5),
   useMaterial3: true,
-  primaryTextTheme: GoogleFonts.rubikTextTheme(),
+  primaryTextTheme: GoogleFonts.ubuntuTextTheme(),
   scaffoldBackgroundColor: lightColorScheme.surface,
   //
-  textTheme: GoogleFonts.rubikTextTheme().copyWith(
+  textTheme: GoogleFonts.ubuntuTextTheme().copyWith(
     headlineLarge: const TextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
     ),
-    displayMedium: GoogleFonts.rubik(
+    displayMedium: GoogleFonts.ubuntu(
       color: ExtraColors.black,
       fontSize: 27.0,
       fontWeight: FontWeight.w700,
@@ -38,9 +37,9 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
   appBarTheme: AppBarTheme(
-    systemOverlayStyle:
-        const SystemUiOverlayStyle(statusBarColor: Color(0xFFFC6011)),
-    titleTextStyle: GoogleFonts.rubik(
+    // systemOverlayStyle:
+    //     const SystemUiOverlayStyle(statusBarColor: Color(0xFFFC6011)),
+    titleTextStyle: GoogleFonts.ubuntu(
       color: ExtraColors.black,
       fontSize: 20,
       fontWeight: FontWeight.w600,
@@ -59,33 +58,30 @@ ThemeData lightTheme = ThemeData(
     prefixIconColor: ExtraColors.black,
     suffixIconColor: ExtraColors.black,
     border: OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(13.0),
+      borderRadius: BorderRadius.circular(10.0),
+      borderSide: const BorderSide(color: ExtraColors.darkGrey, width: 1),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(13.0),
+      borderRadius: BorderRadius.circular(10.0),
+      borderSide: const BorderSide(color: ExtraColors.darkGrey, width: 1),
     ),
     disabledBorder: OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(13.0),
+      borderRadius: BorderRadius.circular(10.0),
+      borderSide: const BorderSide(color: ExtraColors.darkGrey, width: 1),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(13.0),
-      borderSide: const BorderSide(
-        width: 1.5,
-        color: Color(0xFFBDBDBD),
-      ),
+      borderRadius: BorderRadius.circular(10.0),
+      borderSide: const BorderSide(color: ExtraColors.darkGrey, width: 1),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(13.0),
+      borderRadius: BorderRadius.circular(10.0),
       borderSide: const BorderSide(
         width: 1.5,
         color: Color(0xFFE57373),
       ),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(13.0),
+      borderRadius: BorderRadius.circular(10.0),
       borderSide: const BorderSide(
         width: 1.5,
         color: Color(0xFFE57373),
@@ -101,7 +97,7 @@ ThemeData lightTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      textStyle: GoogleFonts.rubik(
+      textStyle: GoogleFonts.ubuntu(
         fontSize: 15,
         fontWeight: FontWeight.w500,
       ),
@@ -122,7 +118,7 @@ ThemeData lightTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      textStyle: GoogleFonts.rubik(
+      textStyle: GoogleFonts.ubuntu(
         fontSize: 15,
         fontWeight: FontWeight.w500,
       ),
