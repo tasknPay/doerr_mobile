@@ -5,6 +5,7 @@ import 'package:doerr/shared/presentation/widgets/constants/app_text.dart';
 import 'package:doerr/src/authentication/presentation/interface/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../shared/utils/navigation.dart';
 import '../widgets/or_divider.dart';
 import '../widgets/social_circle_auth_buttons.dart';
 
@@ -103,10 +104,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                   const AppSpacer.hShorter(),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginScreen()));
+                      NavigationHelper.navigateTo(context, const LoginScreen());
                     },
                     child: const AppText.smaller(
                       'Log in',

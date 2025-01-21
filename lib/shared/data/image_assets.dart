@@ -1,5 +1,4 @@
 class ImageAssets {
-  static const String face = 'assets/static/purple_face.png';
   static const String breakfast = 'assets/static/breakfast.jpg';
   static const String lunch = 'assets/static/lunch.jpg';
   static const String dinner = 'assets/static/dinner.jpg';
@@ -13,4 +12,5 @@ class ImageAssets {
   static const String google = 'assets/static/google.png';
   static const String apple = 'assets/static/apple.png';
   static const String getStarted = 'assets/static/getstarted.jpg';
+  static const String onboarding = 'assets/images/onboarding_image.png';
 }

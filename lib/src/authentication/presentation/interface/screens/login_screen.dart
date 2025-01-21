@@ -5,6 +5,7 @@ import '../../../../../shared/presentation/theme/extra_colors.dart';
 import '../../../../../shared/presentation/widgets/app_button.dart';
 import '../../../../../shared/presentation/widgets/constants/app_spacer.dart';
 import '../../../../../shared/presentation/widgets/constants/app_text.dart';
+import '../../../../../shared/utils/navigation.dart';
 import '../../../../home/presentation/interface/screens/bottom_nav_bar.dart';
 import '../widgets/or_divider.dart';
 import '../widgets/social_circle_auth_buttons.dart';
@@ -57,9 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
               textColor: ExtraColors.white,
               padding: const EdgeInsets.all(0),
               onTap: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const BottomNavBar()),
-                );
+                NavigationHelper.navigateToReplacement(
+                    context, const BottomNavBar());
               },
             ),
             const AppSpacer.vLarge(),
@@ -89,10 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 const AppSpacer.hShorter(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegisterUserScreen()));
+                    NavigationHelper.navigateTo(
+                        context, const RegisterUserScreen());
                   },
                   child: const AppText.smaller(
                     'Sign up',

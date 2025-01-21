@@ -4,6 +4,7 @@ import 'package:doerr/shared/presentation/theme/extra_colors.dart';
 import 'package:doerr/shared/presentation/widgets/constants/app_sizes.dart';
 import 'package:doerr/shared/presentation/widgets/constants/app_spacer.dart';
 import 'package:doerr/shared/presentation/widgets/constants/app_text.dart';
+import 'package:doerr/shared/utils/navigation.dart';
 import 'package:doerr/src/authentication/presentation/interface/screens/login_screen.dart';
 import 'package:doerr/src/authentication/presentation/interface/screens/register_user_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,19 +21,26 @@ class OnboardingScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-              color: Colors.transparent,
-              height: MediaQuery.of(context).size.height * 0.43),
+            margin: const EdgeInsets.only(bottom: 20),
+            color: Colors.transparent,
+            height: MediaQuery.of(context).size.height * 0.41,
+            child: Image.asset(
+              height: MediaQuery.of(context).size.height * 0.3,
+              'assets/images/onboarding_image.png',
+              fit: BoxFit.cover,
+            ),
+          ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.57,
+            height: MediaQuery.of(context).size.height * 0.56,
             width: double.infinity,
             padding: const EdgeInsets.fromLTRB(25, 20, 25, 30),
             margin:
                 const EdgeInsets.symmetric(horizontal: AppSizes.marginMedium),
             decoration: const BoxDecoration(
-                color: ExtraColors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30))),
+              color: ExtraColors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,10 +85,8 @@ class OnboardingScreen extends StatelessWidget {
                 // Email Sign In Button
                 SocialAuthButton(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegisterUserScreen()));
+                    NavigationHelper.navigateTo(
+                        context, const RegisterUserScreen());
                   },
                   text: 'Sign up with Email',
                   provider: SocialAuthProvider.email,
@@ -98,10 +104,8 @@ class OnboardingScreen extends StatelessWidget {
                     const AppSpacer.hShorter(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginScreen()));
+                        NavigationHelper.navigateTo(
+                            context, const LoginScreen());
                       },
                       child: const AppText.smaller(
                         'Log in',
