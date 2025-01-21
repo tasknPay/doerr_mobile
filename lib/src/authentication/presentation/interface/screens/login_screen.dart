@@ -5,6 +5,7 @@ import '../../../../../shared/presentation/theme/extra_colors.dart';
 import '../../../../../shared/presentation/widgets/app_button.dart';
 import '../../../../../shared/presentation/widgets/constants/app_spacer.dart';
 import '../../../../../shared/presentation/widgets/constants/app_text.dart';
+import '../../../../home/presentation/interface/screens/bottom_nav_bar.dart';
 import '../widgets/or_divider.dart';
 import '../widgets/social_circle_auth_buttons.dart';
 
@@ -48,13 +49,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     hintText: 'Password')),
             const AppSpacer.vLarger(),
-            const AppButton(
+            AppButton(
               height: 45,
               borderRadius: 10,
               backgroundColor: ExtraColors.customGreen,
               text: 'Log in',
               textColor: ExtraColors.white,
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const BottomNavBar()),
+                );
+              },
             ),
             const AppSpacer.vLarge(),
             const OrDivider(
