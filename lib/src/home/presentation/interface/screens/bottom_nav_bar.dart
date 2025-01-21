@@ -63,7 +63,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           BottomNavigationBarItem(
             icon: _selectedIndex == 3
                 ? const Icon(IconlyBold.profile)
-                : const Icon(IconlyLight.user),
+                : const Icon(IconlyLight.profile),
             label: 'Profile',
           ),
         ],

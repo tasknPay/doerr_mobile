@@ -8,6 +8,7 @@ import 'package:smooth_corner/smooth_corner.dart';
 
 import '../../../../../shared/presentation/widgets/constants/decorations.dart';
 import 'popular_task_list_screen.dart';
+import 'task_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -58,10 +59,10 @@ class HomeScreen extends StatelessWidget {
                       'Popular Tasks',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    AppText.smaller(
-                      'See all',
-                      style: TextStyle(color: ExtraColors.darkGrey),
-                    )
+                    // AppText.smaller(
+                    //   'See all',
+                    //   style: TextStyle(color: ExtraColors.darkGrey),
+                    // )
                   ],
                 ),
               ],
@@ -138,79 +139,88 @@ class HomeScreen extends StatelessWidget {
               separatorBuilder: (context, index) =>
                   const SizedBox(height: 16), // Add space between items
               itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
-                  width: double.infinity,
-                  // height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: ExtraColors.darkGrey, width: 0.3),
-                  ),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?cs=srgb&dl=pexels-justin-shaifer-501272-1222271.jpg&fm=jpg'),
+                return GestureDetector(
+                  onTap: () {
+                    NavigationHelper.navigateTo(
+                      context,
+                      const TaskDetailsScreen(),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    width: double.infinity,
+                    // height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border:
+                          Border.all(color: ExtraColors.darkGrey, width: 0.3),
+                    ),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?cs=srgb&dl=pexels-justin-shaifer-501272-1222271.jpg&fm=jpg'),
+                          ),
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AppText.smaller('Bernard Awusi',
+                                  color: Colors.black87),
+                              AppText.smaller('⭐ 5.0',
+                                  size: 12, color: Colors.black87),
+                            ],
+                          ),
                         ),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
+                        AppText.smaller(
+                          padding: EdgeInsets.fromLTRB(16, 0, 0, 08),
+                          'Errands to Bomso Gate',
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 12),
+                        ),
+                        AppText.smaller(
+                            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                            style: TextStyle(
+                                fontSize: 12, color: ExtraColors.darkGrey),
+                            'This task involves delivering a package from Ayeds, "The Octopus", to Bomso Gate, KNUST. The delivery required ensuring the pachage reaches its destunation securely because it is a bit fragile.'),
+                        AppSpacer.vShort(),
+                        Column(
                           children: [
-                            AppText.smaller('Bernard Awusi',
-                                color: Colors.black87),
-                            AppText.smaller('⭐ 5.0',
-                                size: 12, color: Colors.black87),
+                            Row(
+                              children: [
+                                SizedBox(width: 16),
+                                Icon(IconlyLight.calendar, size: 20),
+                                SizedBox(width: 3),
+                                Text(
+                                  'Today 27th Dec 2025, 5PM GMT',
+                                  style: TextStyle(
+                                      fontSize: 12, color: ExtraColors.grey),
+                                ),
+                              ],
+                            ),
+                            AppSpacer.vShorter(),
+                            Row(
+                              children: [
+                                SizedBox(width: 16),
+                                Icon(IconlyLight.wallet, size: 20),
+                                SizedBox(width: 3),
+                                Text(
+                                  'GHS 50.00',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: ExtraColors.customGreen,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            AppSpacer.vShort(),
                           ],
                         ),
-                      ),
-                      AppText.smaller(
-                        padding: EdgeInsets.fromLTRB(16, 0, 0, 08),
-                        'Errands to Bomso Gate',
-                        maxLines: 1,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 12),
-                      ),
-                      AppText.smaller(
-                          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          style: TextStyle(
-                              fontSize: 12, color: ExtraColors.darkGrey),
-                          'This task involves delivering a package from Ayeds, "The Octopus", to Bomso Gate, KNUST. The delivery required ensuring the pachage reaches its destunation securely because it is a bit fragile.'),
-                      AppSpacer.vShort(),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              SizedBox(width: 16),
-                              Icon(IconlyLight.calendar, size: 20),
-                              SizedBox(width: 3),
-                              Text(
-                                'Today 27th Dec 2025, 5PM GMT',
-                                style: TextStyle(
-                                    fontSize: 12, color: ExtraColors.grey),
-                              ),
-                            ],
-                          ),
-                          AppSpacer.vShorter(),
-                          Row(
-                            children: [
-                              SizedBox(width: 16),
-                              Icon(IconlyLight.wallet, size: 20),
-                              SizedBox(width: 3),
-                              Text(
-                                'GHS 50.00',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: ExtraColors.customGreen,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          AppSpacer.vShort(),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               })
