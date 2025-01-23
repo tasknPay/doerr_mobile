@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'extra_colors.dart';
@@ -37,8 +38,8 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
   appBarTheme: AppBarTheme(
-    // systemOverlayStyle:
-    //     const SystemUiOverlayStyle(statusBarColor: Color(0xFFFC6011)),
+    systemOverlayStyle:
+        const SystemUiOverlayStyle(statusBarColor: ExtraColors.customGreen),
     titleTextStyle: GoogleFonts.ubuntu(
       color: ExtraColors.black,
       fontSize: 20,

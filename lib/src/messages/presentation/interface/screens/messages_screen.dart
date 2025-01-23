@@ -1,11 +1,13 @@
 import 'package:doerr/shared/presentation/theme/extra_colors.dart';
 import 'package:doerr/shared/presentation/widgets/constants/app_spacer.dart';
+import 'package:doerr/shared/utils/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../../../../shared/presentation/widgets/constants/app_text.dart';
 import '../../../domain/entity/message.dart';
 import '../widgets/messages_search_delegate.dart';
+import 'chat_screen.dart';
 
 class MessagesScreen extends StatefulWidget {
   const MessagesScreen({super.key});
@@ -128,6 +130,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
         itemBuilder: (context, index) {
           final message = _messages[index];
           return ListTile(
+            onTap: () {
+              NavigationHelper.navigateTo(
+                  context, ChatScreen(contact: message));
+            },
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             leading: CircleAvatar(
