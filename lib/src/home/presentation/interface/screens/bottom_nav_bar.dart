@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
+import '../../../../messages/presentation/interface/screens/messages_screen.dart';
 import 'home_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -73,20 +74,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
 }
 
 // Example screen implementations
-
-class MessagesScreen extends StatelessWidget {
-  const MessagesScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      // Add Scaffold here
-      body: Center(
-        child: Text('Messages Screen'),
-      ),
-    );
-  }
-}
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({super.key});

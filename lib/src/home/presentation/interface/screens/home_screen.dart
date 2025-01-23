@@ -102,8 +102,9 @@ class HomeScreen extends StatelessWidget {
                             width: 120,
                             child: Image(
                               image: NetworkImage(
-                                  'https://cdn.slidesharecdn.com/ss_thumbnails/031110choresanderrandsliesl-101102035311-phpapp02-thumbnail.jpg?width=640&height=640&fit=bounds'),
-                              fit: BoxFit.fill,
+                                'https://cdn.prod.website-files.com/668cdb4718c0f5195a92717d/66a83d38dd44e03e114223f5_Understanding-top-tasks.png',
+                              ),
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
