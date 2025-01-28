@@ -6,6 +6,10 @@ import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
+import '../widgets/checkout_widget.dart';
+import '../widgets/order_confirmed_widget.dart';
+import '../widgets/review_widget.dart';
+
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({super.key});
 
@@ -17,11 +21,20 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   int activeStep = 0;
 
   void _onNextPressed() {
-    if (activeStep < 4) {
+    if (activeStep < 3) {
       setState(() {
         activeStep++;
       });
     }
+  }
+
+  void _showOrderConfirmedDialog() {
+    setState(() {});
+    showDialog(
+      context: context,
+      builder: (context) => const OrderConfirmedDialog(),
+    );
+    activeStep = 0;
   }
 
   void _onPreviousPressed() {
@@ -75,12 +88,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   ),
                   child: FloatingActionButton(
                     heroTag: 'forward',
-                    onPressed: _onNextPressed,
+                    onPressed: activeStep < 3
+                        ? _onNextPressed
+                        : _showOrderConfirmedDialog,
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                     mini: true,
                     child: Icon(
-                      activeStep < 4 ? Icons.arrow_forward_ios : Icons.check,
+                      activeStep < 3 ? Icons.arrow_forward_ios : Icons.check,
                       color: Colors.grey,
                       size: 18,
                     ),
@@ -95,121 +110,100 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           children: [
             const AppSpacer.vLarger(),
             const AppSpacer.vShort(),
-            EasyStepper(
-              padding: const EdgeInsets.all(0),
-              activeStep: activeStep,
-              stepShape: StepShape.circle,
-              borderThickness: 2,
-              stepRadius: 22,
-              finishedStepBorderColor: ExtraColors.customGreen,
-              finishedStepIconColor: ExtraColors.white,
-              finishedStepTextColor: ExtraColors.customGreen,
-              finishedStepBackgroundColor: Colors.transparent,
-              unreachedStepIconColor: ExtraColors.darkGrey,
-              unreachedStepTextColor: ExtraColors.darkGrey,
-              activeStepIconColor: Colors.black87,
-              activeStepBorderColor: Colors.black87,
-              activeStepTextColor: Colors.black87,
-              enableStepTapping: false,
-              showLoadingAnimation: true,
-              steps: [
-                EasyStep(
-                  customStep: Icon(
-                    IconlyBold.paper_plus,
-                    color:
-                        activeStep >= 0 ? ExtraColors.customGreen : Colors.grey,
-                  ),
-                  customTitle: Text(
-                    'Task',
-                    style: TextStyle(
-                      color: activeStep >= 0
-                          ? (activeStep == 0
-                              ? Colors.black87
-                              : ExtraColors.customGreen)
-                          : ExtraColors.darkGrey,
+            SizedBox(
+              height: 105,
+              child: EasyStepper(
+                padding: const EdgeInsets.all(0),
+                activeStep: activeStep,
+                stepShape: StepShape.circle,
+                borderThickness: 2,
+                stepRadius: 22,
+                finishedStepBorderColor: ExtraColors.customGreen,
+                finishedStepIconColor: ExtraColors.white,
+                finishedStepTextColor: ExtraColors.customGreen,
+                finishedStepBackgroundColor: ExtraColors.customGreen,
+                unreachedStepIconColor: ExtraColors.darkGrey,
+                unreachedStepTextColor: ExtraColors.darkGrey,
+                activeStepIconColor: Colors.black87,
+                activeStepBorderColor: Colors.black87,
+                activeStepTextColor: Colors.black87,
+                enableStepTapping: false,
+                showLoadingAnimation: true,
+                steps: [
+                  EasyStep(
+                    customStep: Icon(
+                      IconlyBold.paper_plus,
+                      color: activeStep >= 0 ? ExtraColors.white : Colors.grey,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                EasyStep(
-                  customStep: Icon(
-                    IconlyBold.document,
-                    color:
-                        activeStep >= 1 ? ExtraColors.customGreen : Colors.grey,
-                  ),
-                  customTitle: Text(
-                    'Details',
-                    style: TextStyle(
-                      color: activeStep >= 1
-                          ? (activeStep == 1
-                              ? Colors.black87
-                              : ExtraColors.customGreen)
-                          : ExtraColors.darkGrey,
+                    customTitle: Text(
+                      'Task',
+                      style: TextStyle(
+                        color: activeStep >= 0
+                            ? (activeStep == 0
+                                ? Colors.black87
+                                : ExtraColors.customGreen)
+                            : ExtraColors.darkGrey,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                ),
-                EasyStep(
-                  customStep: Icon(
-                    IconlyBold.show,
-                    color:
-                        activeStep >= 2 ? ExtraColors.customGreen : Colors.grey,
-                  ),
-                  customTitle: Text(
-                    'Review',
-                    style: TextStyle(
-                      color: activeStep >= 2
-                          ? (activeStep == 2
-                              ? Colors.black87
-                              : ExtraColors.customGreen)
-                          : ExtraColors.darkGrey,
+                  EasyStep(
+                    customStep: Icon(
+                      IconlyBold.document,
+                      color: activeStep >= 1 ? ExtraColors.white : Colors.grey,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                EasyStep(
-                  customStep: Icon(
-                    IconlyBold.buy,
-                    color:
-                        activeStep >= 3 ? ExtraColors.customGreen : Colors.grey,
-                  ),
-                  customTitle: Text(
-                    'Checkout',
-                    style: TextStyle(
-                      color: activeStep >= 3
-                          ? (activeStep == 3
-                              ? Colors.black87
-                              : ExtraColors.customGreen)
-                          : ExtraColors.darkGrey,
+                    customTitle: Text(
+                      'Details',
+                      style: TextStyle(
+                        color: activeStep >= 1
+                            ? (activeStep == 1
+                                ? Colors.black87
+                                : ExtraColors.customGreen)
+                            : ExtraColors.darkGrey,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                ),
-                EasyStep(
-                  customStep: Icon(
-                    IconlyBold.tick_square,
-                    color:
-                        activeStep >= 4 ? ExtraColors.customGreen : Colors.grey,
-                  ),
-                  customTitle: Text(
-                    'Payment',
-                    style: TextStyle(
-                      color: activeStep >= 4
-                          ? (activeStep == 4
-                              ? Colors.black87
-                              : ExtraColors.customGreen)
-                          : ExtraColors.darkGrey,
+                  EasyStep(
+                    customStep: Icon(
+                      IconlyBold.show,
+                      color: activeStep >= 2 ? ExtraColors.white : Colors.grey,
                     ),
-                    textAlign: TextAlign.center,
+                    customTitle: Text(
+                      'Review',
+                      style: TextStyle(
+                        color: activeStep >= 2
+                            ? (activeStep == 2
+                                ? Colors.black87
+                                : ExtraColors.customGreen)
+                            : ExtraColors.darkGrey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-              ],
-              onStepReached: (index) => setState(() => activeStep = index),
+                  EasyStep(
+                    customStep: Icon(
+                      IconlyBold.buy,
+                      color: activeStep >= 3 ? ExtraColors.white : Colors.grey,
+                    ),
+                    customTitle: Text(
+                      'Checkout',
+                      style: TextStyle(
+                        color: activeStep >= 3
+                            ? (activeStep == 3
+                                ? Colors.black87
+                                : ExtraColors.customGreen)
+                            : ExtraColors.darkGrey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+                onStepReached: (index) => setState(() => activeStep = index),
+              ),
             ),
             Expanded(
-              child: Center(
-                child: _buildStepContent(),
-              ),
+              child: _buildStepContent(),
             ),
           ],
         ),
@@ -224,20 +218,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       case 1:
         return const TaskDetailsWidget();
       case 2:
-        return const Text(
-          'Review Task',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-        );
+        return const ReviewWidget();
       case 3:
-        return const Text(
-          'Checkout',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-        );
-      case 4:
-        return const Text(
-          'Payment Complete',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-        );
+        return const CheckoutWidget();
       default:
         return Container();
     }
