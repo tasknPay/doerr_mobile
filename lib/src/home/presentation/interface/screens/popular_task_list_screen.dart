@@ -112,12 +112,18 @@ class _PopularTaskListScreenState extends State<PopularTaskListScreen> {
                             SizedBox(width: 16),
                             Icon(IconlyLight.wallet, size: 20),
                             SizedBox(width: 3),
-                            Text(
-                              'GHS 50.00',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: ExtraColors.customGreen,
-                                  fontWeight: FontWeight.bold),
+                            Material(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                              color: ExtraColors.customGreen,
+                              child: AppText(
+                                padding: EdgeInsets.all(4),
+                                'GHS 50.00',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: ExtraColors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ],
                         ),
