@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../../../messages/presentation/interface/screens/messages_screen.dart';
+import '../../../../profile/presentation/interface/screens/profile_screen.dart';
 import '../../../../tasks/presentation/interface/screens/add_task_screen.dart';
 import 'home_screen.dart';
 
@@ -69,22 +70,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Profile',
           ),
         ],
-      ),
-    );
-  }
-}
-
-// Example screen implementations
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      // Add Scaffold here
-      body: Center(
-        child: Text('Profile Screen'),
       ),
     );
   }
