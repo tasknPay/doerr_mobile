@@ -94,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: const AppText.smaller(
                     'Sign up',
-                    color: ExtraColors.link,
+                    style: TextStyle(
+                        color: ExtraColors.link, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

@@ -108,7 +108,8 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                     },
                     child: const AppText.smaller(
                       'Log in',
-                      color: ExtraColors.link,
+                      style: TextStyle(
+                          color: ExtraColors.link, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],

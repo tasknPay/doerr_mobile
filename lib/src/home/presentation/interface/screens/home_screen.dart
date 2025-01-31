@@ -183,9 +183,12 @@ class HomeScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold, fontSize: 12),
                         ),
                         AppText.smaller(
+                            maxLines: 2,
                             padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                             style: TextStyle(
-                                fontSize: 12, color: ExtraColors.darkGrey),
+                                fontSize: 12,
+                                color: ExtraColors.darkGrey,
+                                overflow: TextOverflow.ellipsis),
                             'This task involves delivering a package from Ayeds, "The Octopus", to Bomso Gate, KNUST. The delivery required ensuring the pachage reaches its destunation securely because it is a bit fragile.'),
                         AppSpacer.vShort(),
                         Column(

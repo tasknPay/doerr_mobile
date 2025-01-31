@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../shared/presentation/widgets/constants/app_text.dart';
 
-enum SocialAuthProvider { google, facebook, apple, email, none }
+enum SocialAuthProvider { google, facebook, apple, email, guest, none }
 
 class SocialAuthButton extends StatelessWidget {
   final VoidCallback? onTap;
@@ -62,6 +62,12 @@ class SocialAuthButton extends StatelessWidget {
           size: iconSize,
           color: color,
         );
+      case SocialAuthProvider.guest:
+        return FaIcon(
+          FontAwesomeIcons.users,
+          size: iconSize,
+          color: color,
+        );
       default:
         return const SizedBox.shrink();
     }
@@ -99,7 +105,7 @@ class SocialAuthButton extends StatelessWidget {
                     if (provider != SocialAuthProvider.none)
                       const SizedBox(width: 12),
                     AppText.smaller(
-                      text ?? 'Continue',
+                      text ?? _getDefaultText(),
                       color: textColor ?? Colors.black87,
                     ),
                   ],
@@ -110,5 +116,22 @@ class SocialAuthButton extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getDefaultText() {
+    switch (provider) {
+      case SocialAuthProvider.google:
+        return 'Continue with Google';
+      case SocialAuthProvider.facebook:
+        return 'Continue with Facebook';
+      case SocialAuthProvider.apple:
+        return 'Continue with Apple';
+      case SocialAuthProvider.email:
+        return 'Continue with Email';
+      case SocialAuthProvider.guest:
+        return 'Continue as Guest';
+      default:
+        return 'Continue';
+    }
   }
 }

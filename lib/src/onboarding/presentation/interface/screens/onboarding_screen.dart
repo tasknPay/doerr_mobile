@@ -60,35 +60,28 @@ class OnboardingScreen extends StatelessWidget {
                   const AppSpacer.vShort(),
                   SocialAuthButton(
                     onTap: () {
-                      log('Email Sign In Button');
+                      log('Google Sign In Button');
                     },
                     text: 'Sign up with Google',
                     provider: SocialAuthProvider.google,
                     backgroundColor: Colors.white,
-                    textColor: Colors.black87, height: 45, // Specific height
+                    textColor: Colors.black87,
+                    hasBorder: true,
+                    borderColor: Colors.grey.shade300,
+                    height: 45,
                   ),
-                  // Facebook Sign In Button
+// Apple Sign In Button
                   SocialAuthButton(
                     onTap: () {
-                      log('Email Sign In Button');
-                    },
-                    text: 'Sign up with Facebook',
-                    provider: SocialAuthProvider.facebook,
-                    backgroundColor: const Color(0xFF1877F2),
-                    textColor: Colors.white, height: 45, // Specific height
-                  ),
-                  // Apple Sign In Button
-                  SocialAuthButton(
-                    onTap: () {
-                      log('Email Sign In Button');
+                      log('Apple Sign In Button');
                     },
                     text: 'Sign up with Apple',
                     provider: SocialAuthProvider.apple,
                     backgroundColor: Colors.black,
                     textColor: Colors.white,
-                    height: 45, // Specific height
+                    height: 45,
                   ),
-                  // Email Sign In Button
+// Email Sign In Button
                   SocialAuthButton(
                     onTap: () {
                       NavigationHelper.navigateTo(
@@ -100,6 +93,18 @@ class OnboardingScreen extends StatelessWidget {
                     height: 45,
                     backgroundColor: Colors.white,
                     textColor: Colors.black87,
+                    borderColor: Colors.grey.shade300,
+                  ),
+// Guest Sign In Button
+                  SocialAuthButton(
+                    onTap: () {
+                      log('Guest Sign In Button');
+                    },
+                    text: 'Continue as Guest',
+                    provider: SocialAuthProvider.guest,
+                    backgroundColor: Colors.grey.shade300,
+                    textColor: Colors.black87,
+                    height: 45,
                   ),
                   const Spacer(),
                   Row(
@@ -115,7 +120,9 @@ class OnboardingScreen extends StatelessWidget {
                         },
                         child: const AppText.smaller(
                           'Log in',
-                          color: ExtraColors.link,
+                          style: TextStyle(
+                              color: ExtraColors.link,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
