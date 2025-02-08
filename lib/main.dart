@@ -1,3 +1,4 @@
+import 'package:doerr/auth_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightTheme,
       debugShowCheckedModeBanner: false,
-      home: const OnboardingScreen(),
+      home: const AuthWrapper(),
     );
   }
 }
