@@ -38,12 +38,12 @@ class SignUpParams extends Equatable {
   List<Object> get props => [email, password, name];
 }
 
-class LoginParams extends Equatable {
-  final String email;
-  final String password;
+// class LoginParams extends Equatable {
+//   final String email;
+//   final String password;
 
-  const LoginParams({required this.email, required this.password});
+//   const LoginParams({required this.email, required this.password});
 
-  @override
-  List<Object> get props => [email, password];
-}
+//   @override
+//   List<Object> get props => [email, password];
+// }
