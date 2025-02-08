@@ -9,6 +9,7 @@ abstract class AuthenticationRemoteDatabase {
   Future<Doer> login(String email, String password);
   Future<Doer> logout();
   Future<bool> validateToken(String token);
+  Future<Doer> register(Doer doer);
 }
 
 class AuthenticationRemoteDatabaseImpl implements AuthenticationRemoteDatabase {
@@ -56,9 +57,34 @@ class AuthenticationRemoteDatabaseImpl implements AuthenticationRemoteDatabase {
   @override
   Future<bool> validateToken(String token) async {
     final response = await http.get(
-      Uri.parse('${EndPoints.baseUrl}/workers'),
+      Uri.parse('${EndPoints.baseUrl}/services'),
       headers: {'Authorization': 'Bearer $token'},
     );
     return response.statusCode == 200;
+  }
+
+  @override
+  Future<Doer> register(Doer doer) async {
+    final response = await http.post(
+      Uri.parse('${EndPoints.baseUrl}/register'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'name': doer.name,
+        'email': doer.email,
+        'phone': doer.phone,
+        'password': doer.password,
+      }),
+    );
+    final data = json.decode(response.body);
+    if (response.statusCode == 200 && data['status'] == 'success') {
+      return Doer(
+        name: '${data['user']['firstname']} ${data['user']['lastname']}',
+        email: data['user']['email'],
+        phone: data['user']['id'],
+        token: data['token'],
+      );
+    } else {
+      throw Exception(data['message'] ?? 'Failed to register');
+    }
   }
 }

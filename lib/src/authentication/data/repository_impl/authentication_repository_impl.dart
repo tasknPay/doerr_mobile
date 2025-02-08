@@ -71,4 +71,20 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return false;
     }
   }
+
+  @override
+  Future<Either<Failure, Doer>> register(Doer doer) async {
+    try {
+      await networkInfo.hasInternet();
+      final registeredDoer = await remoteDatabase.register(doer);
+      if (registeredDoer.token != null) {
+        await localDatabase.saveToken(registeredDoer.token!);
+      }
+      return Right(registeredDoer);
+    } on DeviceException catch (error) {
+      return Left(Failure(error.message));
+    } catch (error) {
+      return Left(Failure(error.toString()));
+    }
+  }
 }

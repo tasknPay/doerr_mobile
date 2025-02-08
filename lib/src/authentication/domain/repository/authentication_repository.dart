@@ -6,5 +6,6 @@ import '../../../../shared/error/failure.dart';
 abstract class AuthenticationRepository {
   Future<Either<Failure, Doer>> logout();
   Future<Either<Failure, Doer>> login(String email, String password);
+  Future<Either<Failure, Doer>> register(Doer doer);
   Future<bool> isLoggedIn();
 }

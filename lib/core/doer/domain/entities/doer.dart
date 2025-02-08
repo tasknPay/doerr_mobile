@@ -10,6 +10,7 @@ class Doer with _$Doer {
     required String phone,
     required String name,
     String? token,
+    String? password,
   }) = _Doer;
 
   factory Doer.fromJson(Map<String, dynamic> json) => _$DoerFromJson(json);
@@ -19,5 +20,6 @@ class Doer with _$Doer {
         phone: '',
         name: '',
         token: '',
+        password: '',
       );
 }

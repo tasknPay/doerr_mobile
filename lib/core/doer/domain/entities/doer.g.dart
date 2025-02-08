@@ -11,6 +11,7 @@ _$DoerImpl _$$DoerImplFromJson(Map<String, dynamic> json) => _$DoerImpl(
       phone: json['phone'] as String,
       name: json['name'] as String,
       token: json['token'] as String?,
+      password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$$DoerImplToJson(_$DoerImpl instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$DoerImplToJson(_$DoerImpl instance) =>
       'phone': instance.phone,
       'name': instance.name,
       'token': instance.token,
+      'password': instance.password,
     };

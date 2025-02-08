@@ -24,6 +24,7 @@ mixin _$Doer {
   String get phone => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
 
   /// Serializes this Doer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,12 @@ abstract class $DoerCopyWith<$Res> {
   factory $DoerCopyWith(Doer value, $Res Function(Doer) then) =
       _$DoerCopyWithImpl<$Res, Doer>;
   @useResult
-  $Res call({String email, String phone, String name, String? token});
+  $Res call(
+      {String email,
+      String phone,
+      String name,
+      String? token,
+      String? password});
 }
 
 /// @nodoc
@@ -61,6 +67,7 @@ class _$DoerCopyWithImpl<$Res, $Val extends Doer>
     Object? phone = null,
     Object? name = null,
     Object? token = freezed,
+    Object? password = freezed,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -79,6 +86,10 @@ class _$DoerCopyWithImpl<$Res, $Val extends Doer>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -90,7 +101,12 @@ abstract class _$$DoerImplCopyWith<$Res> implements $DoerCopyWith<$Res> {
       __$$DoerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String phone, String name, String? token});
+  $Res call(
+      {String email,
+      String phone,
+      String name,
+      String? token,
+      String? password});
 }
 
 /// @nodoc
@@ -109,6 +125,7 @@ class __$$DoerImplCopyWithImpl<$Res>
     Object? phone = null,
     Object? name = null,
     Object? token = freezed,
+    Object? password = freezed,
   }) {
     return _then(_$DoerImpl(
       email: null == email
@@ -127,6 +144,10 @@ class __$$DoerImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -138,7 +159,8 @@ class _$DoerImpl implements _Doer {
       {required this.email,
       required this.phone,
       required this.name,
-      this.token});
+      this.token,
+      this.password});
 
   factory _$DoerImpl.fromJson(Map<String, dynamic> json) =>
       _$$DoerImplFromJson(json);
@@ -151,10 +173,12 @@ class _$DoerImpl implements _Doer {
   final String name;
   @override
   final String? token;
+  @override
+  final String? password;
 
   @override
   String toString() {
-    return 'Doer(email: $email, phone: $phone, name: $name, token: $token)';
+    return 'Doer(email: $email, phone: $phone, name: $name, token: $token, password: $password)';
   }
 
   @override
@@ -165,12 +189,15 @@ class _$DoerImpl implements _Doer {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, email, phone, name, token);
+  int get hashCode =>
+      Object.hash(runtimeType, email, phone, name, token, password);
 
   /// Create a copy of Doer
   /// with the given fields replaced by the non-null parameter values.
@@ -193,7 +220,8 @@ abstract class _Doer implements Doer {
       {required final String email,
       required final String phone,
       required final String name,
-      final String? token}) = _$DoerImpl;
+      final String? token,
+      final String? password}) = _$DoerImpl;
 
   factory _Doer.fromJson(Map<String, dynamic> json) = _$DoerImpl.fromJson;
 
@@ -205,6 +233,8 @@ abstract class _Doer implements Doer {
   String get name;
   @override
   String? get token;
+  @override
+  String? get password;
 
   /// Create a copy of Doer
   /// with the given fields replaced by the non-null parameter values.
